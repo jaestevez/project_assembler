@@ -22,11 +22,7 @@
     CALL SUMA 
     CALL SALIR
     
-    ORDENAR:   
-        ;MOV AX,BP
-        ;ADD AX,09h  
-        ;CMP SI,AX
-        ;JE SALIR    
+    ORDENAR:  
         MOV SI,BP
         MOV CX,0FFFFh
         VECTOR:        
@@ -45,7 +41,7 @@
         MOV AX,BP
         ADD AX,09h  
         CMP SI,AX
-        JE SIG
+        JE SIG ; TERMINACION CICLO
         
         LOOP VECTOR  
         
@@ -64,15 +60,19 @@
         MOV [BX],AH
         
         JMP ORDENAR
-    SUMA:
+    SUMA:         
+        MOV DX,00h;SUMA VECTORES
         LEA SI,VECT1
         LEA DI,VECT2
         LEA BX,SUM  
-        MOV CX,09h
+        MOV CX,0Ah
         SUMANDO:   
-            MOV DL,[SI]
-            ADD DL,[DI]
-            MOV [BX],DL
+            ADD DH,[SI];SUMA VECTOR1
+            ADD DL,[DI];SUMA VECTOR2
+            
+            MOV AL,[SI]
+            ADD AL,[DI]
+            MOV [BX],AL
             INC SI
             INC DI
             INC BX

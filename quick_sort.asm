@@ -2,7 +2,7 @@
 .stack 256
 .data
     VECT1 DB 06h,02h,08h,04h,05h,01h,07h,03h,09h,0Ah
-    VECT2 DB 05h,09h,02h,07h,06h,0Ah,04h,03h,08,01h
+    VECT2 DB 14h,0Eh,0Dh,0Ch,0Fh,12h,11h,10h,0Bh,13h
     SUM DB ?,?,?,?,?,?,?,?,?,?
 .code
 .start  

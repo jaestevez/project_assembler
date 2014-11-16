@@ -7,8 +7,6 @@
 .code
 .start  
     ; punteros SI y DI
-    MOV AX,0E00h
-    MOV SP,AX   
        
     ORD_VEC1:
         LEA BX,VECT1

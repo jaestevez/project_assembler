@@ -10,16 +10,22 @@
     MOV AX,0E00h
     MOV SP,AX   
        
-    VEC1:
+    ORD_VEC1:
         LEA BX,VECT1
         MOV BP,BX
         CALL ORDENAR
     
-    VEC2:
+    ORD_VEC2:
         LEA BX,VECT2  
         MOV BP,BX
         CALL ORDENAR 
-    CALL SUMA 
+        
+    SUMAR1:
+        LEA SI,VECT1
+        LEA DI,VECT2
+        LEA BX,SUM
+        CALL SUMA 
+        
     CALL SALIR
     
     ORDENAR:  
@@ -62,9 +68,10 @@
         JMP ORDENAR
     SUMA:         
         MOV DX,00h;SUMA VECTORES
-        LEA SI,VECT1
-        LEA DI,VECT2
-        LEA BX,SUM  
+          
+        ;vectores entrada en SI yDI
+        ;vector resultado BX
+         
         MOV CX,0Ah
         SUMANDO:   
             ADD DH,[SI];SUMA VECTOR1
@@ -77,6 +84,7 @@
             INC DI
             INC BX
         LOOP SUMANDO
+        RET
         
     SALIR:
         NOP
